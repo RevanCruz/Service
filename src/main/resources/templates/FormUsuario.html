@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layaout"
+      layout:decorate="~{layout}">
+    <head>
+        <title>RegistroUsuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body layout:fragment="body">
+        <form id="file" >
+            <div class="container">
+                <br>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <input type="file" class="form-control" name="Imagen" id="Imagen" accept="image/jpg">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="text" class="form-control" name="Apellido" id="Apellido" placeholder="Apellido">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="Fecha Nacimiento">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="password" name="Password" id="Password" placeholder="Password">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text"name="UserName" id="UserName" placeholder="UserName">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" name="registrar" id="registrar" type="submit">Registrar</button>
+        </form>
+    </body>
+</html>
+<script>
+
+    $("#registrar").on('click', function () {
+        $.ajax({
+            type: "POST",
+            url: "/usuario/Form",
+            datatype: "json",
+            data: {Nombre: document.getElementById("Nombre").value,Apellido: document.getElementById("Fecha"),Password: document.getElementById("UserName").value}
+        });
+        
+    });
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layaout"
+      layout:decorate="~{layout}">
+    <head>
+        <title>Tarea</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="card">
+
+        </div>
+        <div id="Table">
+
+        </div>
+    </body>
+</html>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: 'GET',
+            url: "/tarea/GetAll",
+            dataType: 'JSON',
+            success: function (usuarios) {
+                $.each(tarea, function (i, tareas) {
+                    $("#card").append('<div class="container" id="tabla">\n\
+                                            <div class="card" style="width: 18rem;">\n\
+                                                <img src="..." class="card-img-top" alt="...">\n\
+                                                <div class="card-body"><h5 class="card-title">' + tareas.Titulo + '</h5>\n\
+                                                    <p class="card-text"></p><a href="#" class="btn btn-primary">Go somewhere</a>\n\
+                                                </div>\n\
+                                            </div>\n\
+                                        </div>');
+                });
+                });
+                        document.getElementById("tabla").innerHTML = html;
+            }
+        });
+    });
+</script>
